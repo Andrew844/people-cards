@@ -1,0 +1,307 @@
+.people {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.people .filter-panel {
+  height: 100px;
+  width: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 30px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+.people .filter-panel .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: inherit;
+  padding: 10px 10px 10px 10px;
+  width: 350px;
+}
+
+.people .filter-panel .buttons input {
+  background-color: #5ba3cf;
+  color: white;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 10px 10px 10px;
+  margin: 10px 10px 10px 10px;
+}
+
+.people .card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  position: relative;
+  background-color: #e8c91e;
+  width: 500px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.people .card::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: #a82222;
+  -webkit-transition: opacity .5s ease-in-out;
+  transition: opacity .5s ease-in-out;
+  opacity: 0;
+  -webkit-box-shadow: 15px 15px 0 1px;
+          box-shadow: 15px 15px 0 1px;
+}
+
+.people .card:hover::after {
+  opacity: 1;
+}
+
+.people .card .avatar img {
+  border-radius: 15px;
+}
+
+.people .card .characteristics {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 330px;
+}
+
+.people .card .characteristics p {
+  color: #3b3b3b;
+  font-weight: 600;
+  font-family: 'Open Sans', sans-serif;
+  padding: 5px 5px 5px 5px;
+}
+
+.people .card .characteristics .name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.people .card .characteristics .other {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.add-pupil {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.add-pupil .pupil-editor {
+  width: 50%;
+  height: 250px;
+}
+
+.add-pupil .pupil-editor .pupil-editor__header h3 {
+  text-align: center;
+}
+
+.add-pupil .pupil-editor .fields {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.add-pupil .pupil-editor .fields input[type="text"] {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: 1px solid #919191;
+  height: 30px;
+  padding-left: 10px;
+}
+
+.add-pupil .card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  position: relative;
+  background-color: #e8c91e;
+  width: 500px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.add-pupil .card::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: #a82222;
+  -webkit-transition: opacity .5s ease-in-out;
+  transition: opacity .5s ease-in-out;
+  opacity: 0;
+  -webkit-box-shadow: 15px 15px 0 1px;
+          box-shadow: 15px 15px 0 1px;
+}
+
+.add-pupil .card:hover::after {
+  opacity: 1;
+}
+
+.add-pupil .card .avatar img {
+  border-radius: 15px;
+}
+
+.add-pupil .card .characteristics {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 330px;
+}
+
+.add-pupil .card .characteristics p {
+  color: #3b3b3b;
+  font-weight: 600;
+  font-family: 'Open Sans', sans-serif;
+  padding: 5px 5px 5px 5px;
+}
+
+.add-pupil .card .characteristics .name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.add-pupil .card .characteristics .other {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.save-changes {
+  width: 100%;
+  text-align: center;
+}
+
+.save-changes input[type="button"] {
+  background-color: #5ba3cf;
+  color: white;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 10px 10px 10px;
+  margin: 10px 10px 10px 10px;
+}
+
+.modal {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  text-align: center;
+  width: 600px;
+  left: 50%;
+  margin-top: 11%;
+  margin-left: -25%;
+  padding: 10px 20px 20px 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+}
+
+.modal .change-characteristics {
+  margin: auto;
+  width: 500px;
+}
+
+.modal .change-characteristics input[type="text"] {
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.modal-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 70px;
+  margin-top: 20px;
+}
+
+.modal-footer input[type="button"] {
+  width: 100px;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  background-color: #5ba3cf;
+  color: #ffffff;
+}
+
+.modal-footer input[type="button"]:hover {
+  background-color: #247cb3;
+}
+/*# sourceMappingURL=app.css.map */
