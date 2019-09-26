@@ -3,6 +3,8 @@ import React, {Component} from "react";
 import Filter from "../filter";
 import Card from "../card";
 import ModalWindow from "../modal-window";
+import AddPupil from "../add-pupil";
+import AddToRightList from "../add-to-right-list";
 
 import "./css/app.css"
 
@@ -38,6 +40,7 @@ export default class App extends Component {
 											 "Антипова", "Анастасия", "Александровна", "2019", "example@mail.ru",
 											 "Женщина")
 		],
+		selectedPeople : [],
 		changeableCardId: 0,
 		changeableCard: {
 			avatar: "",
@@ -48,6 +51,7 @@ export default class App extends Component {
 			email: "",
 			gender: "",
 		},
+		stateId: this.id,
 		filter: "all"
 	};
 
@@ -81,20 +85,23 @@ export default class App extends Component {
 	};
 
 	modalWindowActions = (param) => {
-		if (param === "close") {
-			function closeModal () {
-				const modalWindow = document.querySelector(".modal");
-				modalWindow.style = `display: none;`
-			};
-			closeModal();
-		} else if (param === "open") {
-			function openModal () {
-				const modalWindow = document.querySelector(".modal");
-				modalWindow.style = `display: block;`
-			};
-			openModal();
-		} else {
-			console.log(`Your parameter "${param}" is incorrect`);
+		switch (param) {
+			case "close":
+					function closeModal () {
+						const modalWindow = document.querySelector(".modal");
+						modalWindow.style = `display: none;`
+					};
+					closeModal();	
+					break;
+			case "open":
+					function openModal () {
+						const modalWindow = document.querySelector(".modal");
+						modalWindow.style = `display: block;`
+					};
+					openModal();
+					break;
+			default:
+				console.log(`Your parameter "${param}" is incorrect`);
 		}
 	};
 
@@ -105,7 +112,7 @@ export default class App extends Component {
 		const newPeopleArr = [
 			...oldPeopleArr.slice(0, id),
 			newPupil,
-			...oldPeopleArr.slice(id + 1)
+			...oldPeopleArr.slice(id++)
 		]
 		this.setState({people: newPeopleArr});
 	};
@@ -113,58 +120,51 @@ export default class App extends Component {
 	modalInputsChange = (e, inputType) => {
 		switch (inputType) {
 			case "avatar":
-				this.setState({
-					changeableCard: {
-						avatar: e.target.value
-					}
-				});
+				let avatar = this.state.changeableCard;
+				avatar.avatar = e.target.value;
+				this.setState({changeableCard: avatar});
 				break;
 			case "name":
-				this.setState({
-					changeableCard: {
-						name: e.target.value
-					}
-				});
+					let name = this.state.changeableCard;
+					name.name = e.target.value;
+					this.setState({changeableCard: name});
 				break;
 			case "secondName":
-				this.setState({
-					changeableCard: {
-						secondName: e.target.value
-					}
-				});
+					let secondName = this.state.changeableCard;
+					secondName.secondName = e.target.value;
+					this.setState({changeableCard: secondName});
 				break;
 			case "surname":
-				this.setState({
-					changeableCard: {
-						surname: e.target.value
-					}
-				});
+					let surname = this.state.changeableCard;
+					surname.surname = e.target.value;
+					this.setState({changeableCard: surname});
 				break;
 			case "birthDate":
-				this.setState({
-					changeableCard: {
-						birthDate: e.target.value
-					}
-				});
+					let birthDate = this.state.changeableCard;
+					birthDate.birthDate = e.target.value;
+					this.setState({changeableCard: birthDate});
 				break;
 			case "email":
-				this.setState({
-					changeableCard: {
-						email: e.target.value
-					}
-				});
+					let email = this.state.changeableCard;
+					email.email = e.target.value;
+					this.setState({changeableCard: email});
 				break;
 			case "gender":
-				this.setState({
-					changeableCard: {
-						gender: e.target.value
-					}
-				});
+					let gender = this.state.changeableCard;
+					gender.gender = e.target.value;
+					this.setState({changeableCard: gender});
 				break;
 			default:
 				console.log(`The type of your input "${inputType}" is not defined`);
-		} 
-	}
+		}
+	};
+
+	addToSelectedPeople = ({avatar, surname, name, secondName, birthDate, email, gender}) => {
+		const newPupil = this.createPupil(avatar, surname, name, secondName, birthDate, email, gender);
+		const oldArr = this.state.selectedPeople;
+		const newArr = [newPupil, ...oldArr];
+		this.setState({selectedPeople: newArr});
+	};
 
 	render () {
 		const {people, filter} = this.state;
@@ -174,13 +174,25 @@ export default class App extends Component {
 				<ModalWindow close={this.modalWindowActions}
 										 changeInput={this.modalInputsChange}
 										 values={this.state.changeableCard}/>
-				<div className="people">
+				<div className="filter-people">
 					<Filter people={this.state}
 									filterPeople={this.filter}
 									setFilter={this.setFilter}/>
-					<Card people={visibleItems}
-								changeCard={this.editCard}/>
 				</div>
+				<div className="people">
+					<div className="not-selected-people">
+						<Card people={visibleItems}
+										changeCard={this.editCard}/>
+					</div>
+					<div className="buttons">
+						<AddToRightList />
+					</div>
+					<div className="selected-people">
+						<Card people={this.state.selectedPeople}
+									changeCard={this.editCard}/>
+					</div>
+				</div>
+				<AddPupil addSelectedPupil={this.addToSelectedPeople}/>
 			</div>
 		);
 	};
