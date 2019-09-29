@@ -55,8 +55,8 @@
   border-radius: 5px;
   padding: 10px 10px 10px 10px;
   margin: 10px 10px 10px 10px;
-  -webkit-transition: .3s ease;
-  transition: .3s ease;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .filter-people .filter-panel .buttons input:hover {
@@ -110,8 +110,8 @@
   border: none;
   background-color: #5ba3cf;
   color: #ffffff;
-  -webkit-transition: .3s ease;
-  transition: .3s ease;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .modal-footer input[type="button"]:hover {
@@ -159,8 +159,8 @@
   border: none;
   background-color: #5ba3cf;
   color: #ffffff;
-  -webkit-transition: .3s ease;
-  transition: .3s ease;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .add-pupil .add-characteristics input[type="button"]:hover {
@@ -188,13 +188,13 @@
 }
 
 .card::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   height: 100%;
   color: #a82222;
-  -webkit-transition: opacity .5s ease-in-out;
-  transition: opacity .5s ease-in-out;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
   opacity: 0;
   -webkit-box-shadow: 15px 15px 0 1px;
           box-shadow: 15px 15px 0 1px;
@@ -223,7 +223,7 @@
 .card .add-characteristics p, .card .characteristics p {
   color: #3b3b3b;
   font-weight: 600;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   padding: 5px 5px 5px 5px;
 }
 
@@ -312,8 +312,8 @@
   font-family: "Mansalva";
   font-size: 30px;
   color: white;
-  -webkit-transition: .3s ease;
-  transition: .3s ease;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
   margin-top: 10px;
   margin-bottom: 10px;
 }

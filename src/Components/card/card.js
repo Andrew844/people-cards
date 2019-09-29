@@ -11,8 +11,9 @@ export default class Card extends Component {
 				ul.push(
 					<div className="card" 
 							 key={id + 1} id={id}
-							 onClick={() => {
-								 this.props.changeCard(id);
+							 style={{backgroundColor: "rgb(232, 202, 30)"}}
+							 onClick={e => {
+								 this.props.changeCard(e, id, this.props.side);
 								 }}>
 						<Avatar avatar={avatar}/>
 						<div className="characteristics">

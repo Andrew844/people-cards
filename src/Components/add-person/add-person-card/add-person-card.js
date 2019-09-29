@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import Avatar from "../../avatar";
 
-export default class AddPupilCard extends Component {
+export default class AddPersonCard extends Component {
 	render () {
 		const {avatar, surname, name, secondName, birthDate, email, gender, id} = this.props.newPupil;
 		return (

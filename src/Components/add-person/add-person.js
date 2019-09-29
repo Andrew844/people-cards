@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import AddPupilCard from "./add-pupil-card";
+import AddPupilCard from "./add-person-card";
 
-export default class AddPupil extends Component {
+export default class AddPerson extends Component {
 
 	state = {
 		avatar: "",
