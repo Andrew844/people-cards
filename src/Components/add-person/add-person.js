@@ -41,6 +41,18 @@ export default class AddPerson extends Component {
 		}
 	};
 
+	setAllStateValuesToNull = () => {
+		this.setState({
+			avatar: "",
+			surname: "",
+			name: "",
+			secondName: "",
+			birthDate: "",
+			email: "",
+			gender: ""
+		});
+	};
+
 	render () {
 		return (
 			<div className="add-pupil">
@@ -74,7 +86,10 @@ export default class AddPerson extends Component {
 								 value={this.state.gender}
 								 onChange={e => this.inputChange(e, "gender")}/>
 					<input type="button" value="Добавить"
-								 onClick={() => this.props.addSelectedPupil(this.state)}/>
+								 onClick={() => {
+									 this.props.addSelectedPerson(this.state);
+									 this.setAllStateValuesToNull()}
+									}/>
 				</div>
 				<AddPupilCard newPupil={this.state}/>
 			</div>

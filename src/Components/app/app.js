@@ -43,7 +43,6 @@ export default class App extends Component {
 		selectedPeople: [],
 		transitionListRightPeople: new Set(),
 		transitionListLeftPeople: new Set(),
-		changeableCardId: 0,
 		changeableCard: {
 			avatar: "",
 			name: "",
@@ -170,30 +169,38 @@ export default class App extends Component {
 		this.setState({selectedPeople: newArr});
 	};
 
-	changeBackgroundOnClick = (e, id, sideParam) => {
+	changeBackgroundOnClick = (e, avatar, name, secondName, surname, birthDate, email, gender, id, sideParam) => {
 		switch (sideParam) {
 			case "right":
-					let transitionListRightPeople = this.state.transitionListRightPeople;
-					const personIdRight = id;
+				const newPersonRight = {avatar, name, secondName, surname, birthDate, email, gender, id};
 					if (e.target.style.backgroundColor !== "rgb(232, 202, 30)") {
+						this.state.transitionListRightPeople.forEach(person => {
+							if (person.id === id) {
+										this.state.transitionListRightPeople.delete(person);
+									}
+						});
 						e.target.style.backgroundColor = "rgb(232, 202, 30)";
-						transitionListRightPeople.delete(personIdRight);
+						this.setState({transitionListRightPeople: this.state.transitionListRightPeople});
 					} else {
 						e.target.style.backgroundColor = "rgb(39, 144, 230)";
-						transitionListRightPeople.add(personIdRight);
-						this.setState({transitionListRightPeople: transitionListRightPeople});
+						this.state.transitionListRightPeople.add(newPersonRight);
+						this.setState({transitionListRightPeople: this.state.transitionListRightPeople});
 					}
 				break;
 			case "left":
-					let transitionListLeftPeople = this.state.transitionListLeftPeople;
-					const personIdLeft = id;
+					const newPersonLeft = {avatar, name, secondName, surname, birthDate, email, gender, id};
 					if (e.target.style.backgroundColor !== "rgb(232, 202, 30)") {
 						e.target.style.backgroundColor = "rgb(232, 202, 30)";
-						transitionListLeftPeople.delete(personIdLeft);
+						this.state.transitionListLeftPeople.forEach(person => {
+							if (person.id === id) {
+										this.state.transitionListLeftPeople.delete(person);
+									}
+						});
+						this.setState({transitionListLeftPeople: this.state.transitionListLeftPeople});
 					} else {
 						e.target.style.backgroundColor = "rgb(39, 144, 230)";
-						transitionListLeftPeople.add(personIdLeft);
-						this.setState({transitionListLeftPeople: transitionListLeftPeople});
+						this.state.transitionListLeftPeople.add(newPersonLeft);
+						this.setState({transitionListLeftPeople: this.state.transitionListLeftPeople});
 					}
 				break;
 			default:
@@ -204,12 +211,31 @@ export default class App extends Component {
 	deletePerson = (idsArr, sideParam) => {
 		switch (sideParam) {
 			case "right":
-				idsArr.forEach(id => {
-					const deletedPerson = this.state.people.find(person => person.id === id);
-					idsArr.delete(id);
-					this.state.people.splice(deletedPerson.id, 1);
-					this.setState({people: this.state.people});
+				idsArr.forEach(person => {
+				for (let i = 0; i < this.state.people.length; i++) {
+						if (this.state.people[i].id === person.id) {
+							this.state.selectedPeople.push(this.state.people[i]);
+							delete this.state.people[i];
+						}		
+					}
 				});
+				this.setState({selectedPeople: this.state.selectedPeople});
+				this.setState({people: this.state.people});
+				this.setState({transitionListRightPeople: new Set()});
+				break;
+			case "left":
+				idsArr.forEach(person => {
+						for (let i = 0; i < this.state.selectedPeople.length; i++) {
+							if (person.id === this.state.selectedPeople[i].id) {
+								delete this.state.selectedPeople[i];
+								console.log(this.state.selectedPeople[i]);
+								this.state.people.push(this.state.selectedPeople[i]);
+							}
+						}
+				});
+				this.setState({selectedPeople: this.state.selectedPeople});
+				this.setState({people: this.state.people});
+				this.setState({transitionListLeftPeople: new Set()});
 				break;
 			default:
 				console.error(`Your sideParam "${sideParam}" is incorrect`);

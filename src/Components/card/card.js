@@ -13,7 +13,8 @@ export default class Card extends Component {
 							 key={id + 1} id={id}
 							 style={{backgroundColor: "rgb(232, 202, 30)"}}
 							 onClick={e => {
-								 this.props.changeCard(e, id, this.props.side);
+								 this.props.changeCard(e, avatar, name, secondName, surname, 
+																			 birthDate, email, gender, id, this.props.side);
 								 }}>
 						<Avatar avatar={avatar}/>
 						<div className="characteristics">
