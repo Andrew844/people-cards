@@ -212,11 +212,11 @@ export default class App extends Component {
 		switch (sideParam) {
 			case "right":
 				idsArr.forEach(person => {
-				for (let i = 0; i < this.state.people.length; i++) {
-						if (this.state.people[i].id === person.id) {
+					for (let i = 0; i < this.state.people.length; i++) {
+						if (this.state.people[i] && this.state.people[i].id === person.id) {
 							this.state.selectedPeople.push(this.state.people[i]);
 							delete this.state.people[i];
-						}		
+						}
 					}
 				});
 				this.setState({selectedPeople: this.state.selectedPeople});
@@ -225,13 +225,12 @@ export default class App extends Component {
 				break;
 			case "left":
 				idsArr.forEach(person => {
-						for (let i = 0; i < this.state.selectedPeople.length; i++) {
-							if (person.id === this.state.selectedPeople[i].id) {
-								delete this.state.selectedPeople[i];
-								console.log(this.state.selectedPeople[i]);
-								this.state.people.push(this.state.selectedPeople[i]);
-							}
+					for (let i = 0; i < this.state.selectedPeople.length; i++) {
+						if (this.state.selectedPeople[i] && this.state.selectedPeople[i].id === person.id) {
+							this.state.people.push(this.state.selectedPeople[i]);
+							delete this.state.selectedPeople[i];
 						}
+					}
 				});
 				this.setState({selectedPeople: this.state.selectedPeople});
 				this.setState({people: this.state.people});
